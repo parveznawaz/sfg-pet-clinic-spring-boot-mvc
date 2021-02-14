@@ -1,13 +1,10 @@
 package guru.springframework.sfgpetclinic.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table("visits")
+@Table(name = "visits")
 public class Visit extends BaseEntity {
 
     @Column(name = "date")
@@ -16,7 +13,8 @@ public class Visit extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public LocalDate getDate() {
