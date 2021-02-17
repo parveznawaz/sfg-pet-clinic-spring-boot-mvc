@@ -34,9 +34,9 @@ jobs:
       - run: gradle dependencies
 
       - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+              paths:
+              - ~/.m2
+              key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: gradle test
+      - run: mvn integration-test
